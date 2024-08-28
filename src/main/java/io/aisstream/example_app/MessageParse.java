@@ -11,6 +11,7 @@ public class MessageParse {
         //Check if the MessageType is "PositionReport"
         String messageType = jsonObject.getString("MessageType");
         if ("PositionReport".equals(messageType)) {
+            JSONObject PositionReport = jsonObject.getJSONObject("Message").getJSONObject("PositionReport");
             // Extract the MetaData object
             JSONObject metaData = jsonObject.getJSONObject("MetaData");
 
@@ -20,6 +21,7 @@ public class MessageParse {
             String shipName = metaData.getString("ShipName").trim();
             double latitude = metaData.getDouble("latitude");
             double longitude = metaData.getDouble("longitude");
+            int heading = PositionReport.getInt("TrueHeading");
             String timeUtc = metaData.getString("time_utc");
 
             // Print the extracted data
@@ -28,9 +30,10 @@ public class MessageParse {
             System.out.println("Ship Name: " + shipName);
             System.out.println("Latitude: " + latitude);
             System.out.println("Longitude: " + longitude);
+            System.out.println("TrueHeading:" + heading);
             System.out.println("Time UTC: " + timeUtc);
             // Store data in the database
-            DataInsertion.storeVesselData(mmsi, mmsiString, shipName, latitude, longitude, timeUtc);
+            DataInsertion.storeVesselData(mmsi, mmsiString, shipName, latitude, longitude, heading, timeUtc);
         } else {
             System.out.println("Message type is not PositionReport.");
         }

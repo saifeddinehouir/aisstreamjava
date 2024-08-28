@@ -29,11 +29,15 @@ public class AisStreamWebsocketClient extends WebSocketClient {
   @Override
   public void onMessage(ByteBuffer message) {
     String jsonString = StandardCharsets.UTF_8.decode(message).toString();
-    
-    MessageParse.main(jsonString);
-  }
 
-  @Override
+    try {
+      MessageParse.main(jsonString);
+    } catch (Exception e) {
+      System.out.println("Error occurred while processing the message: " + e.getMessage());
+      System.out.println("Original message: " + jsonString);
+    }}
+
+    @Override
     public void onMessage(String message) {
       // unused as aisstream.io returns messages as byte buffers
     }

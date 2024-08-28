@@ -5,6 +5,7 @@ CREATE TABLE  IF NOT EXISTS vessel (
     ship_name VARCHAR(255),
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    heading INT,
     time_utc TIMESTAMP
 );
 CREATE TABLE IF NOT EXISTS current_position (

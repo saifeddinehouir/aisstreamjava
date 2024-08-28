@@ -1,6 +1,0 @@
-io\aisstream\example_app\MessageHandler.class
-io\aisstream\example_app\AisStreamWebsocketClient.class
-io\aisstream\example_app\db\DBUtil.class
-io\aisstream\example_app\App.class
-io\aisstream\example_app\schema\SchemaInitializer.class
-io\aisstream\example_app\schema\FlywayInitializer.class
